@@ -4,7 +4,7 @@ resource "helm_release" "vault-operator" {
   chart            = "vault-operator"
   namespace        = "jx-vault"
   repository       = "https://kubernetes-charts.banzaicloud.com"
-  version          = "1.14.3"
+  version          = "1.19.0"
   create_namespace = true
 }
 
@@ -14,10 +14,14 @@ resource "helm_release" "vault-instance" {
   chart      = "vault-instance"
   namespace  = "jx-vault"
   repository = "https://jenkins-x-charts.github.io/repo"
-  version    = "1.0.24"
+  version    = "1.0.27"
   depends_on = [helm_release.vault-operator]
   set {
     name  = "ingress.enabled"
     value = "false"
+  }
+  set {
+    name  = "pvc.storageClassName"
+    value = "gp2"
   }
 }

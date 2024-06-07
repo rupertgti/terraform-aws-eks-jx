@@ -229,7 +229,7 @@ module "iam_assumable_role_controllerbuild" {
   create_role                   = var.create_ctrlb_role
   role_name                     = var.is_jx2 ? substr("tf-${var.cluster_name}-sa-role-ctrlb-${local.generated_seed}", 0, 60) : "${local.cluster_trunc}-build-ctrl"
   provider_url                  = local.oidc_provider_url
-  role_policy_arns              = ["arn:${data.aws_partition.current.partition}:iam::aws:policy/AmazonS3FullAccess"]
+  role_policy_arns              = ["arn:${data.aws_partition.current.partition}:iam::109386041312:policy/s3-cluster-devops-access"]
   oidc_fully_qualified_subjects = ["system:serviceaccount:jx:jenkins-x-controllerbuild"]
 }
 resource "kubernetes_service_account" "jenkins-x-controllerbuild" {

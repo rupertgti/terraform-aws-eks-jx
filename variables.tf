@@ -132,7 +132,7 @@ variable "key_name" {
 variable "volume_type" {
   description = "The volume type to use. Can be standard, gp2 or io1"
   type        = string
-  default     = "gp2"
+  default     = "gp3"
 }
 
 variable "volume_size" {
@@ -364,11 +364,11 @@ variable "cluster_endpoint_private_access" {
   default     = false
 }
 
-variable "cluster_endpoint_private_access_cidrs" {
-  description = "List of CIDR blocks which can access the Amazon EKS private API server endpoint, when public access is disabled."
-  type        = list(string)
-  default     = ["0.0.0.0/0"]
-}
+# variable "cluster_endpoint_private_access_cidrs" {
+#   description = "List of CIDR blocks which can access the Amazon EKS private API server endpoint, when public access is disabled."
+#   type        = list(string)
+#   default     = ["0.0.0.0/0"]
+# }
 
 variable "cluster_endpoint_public_access" {
   description = "Indicates whether or not the Amazon EKS public API server endpoint is enabled."
@@ -681,5 +681,5 @@ variable "enable_ebs_addon" {
 variable "ebs_addon_version" {
   description = "EBS CSI driver addon (aws-ebs-csi-driver) version"
   type = string
-  default = "v1.21.0-eksbuild.1"
+  default = "v1.31.0-eksbuild.1"
 }

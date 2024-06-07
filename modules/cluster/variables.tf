@@ -44,7 +44,7 @@ variable "max_node_count" {
 
 variable "node_machine_type" {
   type    = string
-  default = "m5.large"
+  default = "m6i.large"
 }
 
 # VPC
@@ -93,7 +93,7 @@ variable "node_groups" {
 variable "node_group_ami" {
   description = "ami type for the node group worker intances"
   type        = string
-  default     = "AL2_x86_64"
+  default     = "AL2023_x86_64_STANDARD"
 }
 
 variable "node_group_disk_size" {
@@ -109,9 +109,9 @@ variable "key_name" {
 }
 
 variable "volume_type" {
-  description = "The volume type to use. Can be standard, gp2 or io1"
+  description = "The volume type to use. Can be standard, gp2, gp3 or io1"
   type        = string
-  default     = "gp2"
+  default     = "gp3"
 }
 
 variable "volume_size" {
@@ -471,7 +471,7 @@ variable "create_addon_role" {
   description = "Flag to control addon iam roles creation"
   type        = bool
   default     = false
-} 
+}
 
 variable "enable_ebs_addon" {
   description = "Flag to enable or disable EBS CSI driver addon"
